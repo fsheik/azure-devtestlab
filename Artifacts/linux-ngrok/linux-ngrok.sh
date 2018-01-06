@@ -2,12 +2,17 @@
 ## Authentication Token ##
 AUTH_TOKEN=$1
 
+if [ -z "$AUTH_TOKEN" ];
+then
+    raise error "Auth token cannot be empty."
+fi
+
 ARCHITECTURE=`uname -m`
 
 ## ngrok binary ##
 mkdir -p /opt/ngrok
 
-if [ $ARCHITECTURE == 'x86_64' ];
+if [ "$ARCHITECTURE"='x86_64' ];
 then
     # 64 Bit
     cp ./ngrok-stable-linux-amd64/ngrok /opt/ngrok/ngrok
@@ -26,4 +31,4 @@ cp ./ngrok.yml /opt/ngrok/ngrok.conf
 ## Setup ngrok as a service ##
 cp ./ngrok.upstart.conf /etc/init/ngrok.conf
 
-service ngrok
+start ngrok
