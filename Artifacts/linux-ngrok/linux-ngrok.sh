@@ -39,10 +39,10 @@ mkdir -p /opt/ngrok
 if [ "$ARCHITECTURE"='x86_64' ];
 then
     # 64 Bit
-    cp ./ngrok-stable-linux-amd64/ngrok /opt/ngrok/ngrok
+    cp ./ngrok_amd64 /opt/ngrok/ngrok
 else
     # 32 Bit
-    cp ./ngrok-stable-linux-386/ngrok /opt/ngrok/ngrok
+    cp ./ngrok_i386 /opt/ngrok/ngrok
 fi
 
 # Check if binary copy was success
