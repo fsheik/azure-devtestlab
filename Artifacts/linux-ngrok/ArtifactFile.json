@@ -10,14 +10,14 @@
     "iconUri": "https://www.debian.org/favicon.ico",
     "targetOsType": "Linux",
     "parameters": {
-        "packages": {
+        "authtoken": {
             "type": "string",
-            "displayName": "",
+            "displayName": "Auth Token",
             "allowEmpty": false,
-            "description": ""
+            "description": "ngrok auth token"
         }
     },
     "runCommand": {
-        "commandToExecute": "[]"
+        "commandToExecute": "[concat('bash linux-ngrok.sh ', parameters('authtoken'))]"
     }
 }
