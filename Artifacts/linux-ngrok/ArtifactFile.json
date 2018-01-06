@@ -7,7 +7,7 @@
         "ngrok",
         "Linux"
     ],
-    "iconUri": "https://www.debian.org/favicon.ico",
+    "iconUri": "https://raw.githubusercontent.com/fsheik/azure-devtestlab/master/Artifacts/linux-ngrok/icon.png",
     "targetOsType": "Linux",
     "parameters": {
         "authtoken": {
