@@ -32,3 +32,7 @@ cp ./ngrok.yml /opt/ngrok/ngrok.conf
 cp ./ngrok.upstart.conf /etc/init/ngrok.conf
 
 start ngrok
+
+# TODO :
+# 1. Add logging
+# 2. Usage description header
