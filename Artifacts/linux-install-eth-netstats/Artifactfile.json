@@ -1,0 +1,18 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
+    "title": "Install eth-netstats",
+    "publisher": "Sheik Farhan",
+    "description": "This is a visual interface for tracking ethereum network status. It uses WebSockets to receive stats from running nodes and output them through an angular interface. It is the front-end implementation for eth-net-intelligence-api.",
+    "tags": [
+        "Stats",
+        "Network",
+        "Ethereum",
+        "Linux"
+    ],
+    "iconUri": "https://raw.githubusercontent.com/fsheik/azure-devtestlab/master/Artifacts/linux-ngrok/icon.png",
+    "targetOsType": "Linux",
+    "parameters": {},
+    "runCommand": {
+        "commandToExecute": "bash linux-install-eth-netstats"
+    }
+}
