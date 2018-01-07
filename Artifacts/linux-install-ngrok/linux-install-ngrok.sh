@@ -4,7 +4,7 @@
 #
 # Usage: linux-ngrok.sh <YOUR_AUTHKEY_HERE>
 
-USAGE_STRING="Usage: linux-ngrok.sh <YOUR_AUTHKEY_HERE>"
+USAGE_STRING="Usage: linux-ngrok.sh <YOUR_AUTHKEY_HERE> [<REMOTE_CONFIG_URL>]"
 
 LOGCMD='logger -i -t AZDEVTST_APTPKG --'
 which logger
@@ -23,13 +23,9 @@ if [ $# -lt 1 ] ; then
   exit 1
 fi  
 
-## Authentication Token ##
+## ARGUMENTS ##
 AUTH_TOKEN=$1
-
-if [ -z "$AUTH_TOKEN" ];
-then
-    raise error "Auth token cannot be empty."
-fi
+REMOTE_CONFIG_URL=$2
 
 ARCHITECTURE=`uname -m`
 
@@ -74,9 +70,19 @@ fi
 chmod +x /opt/ngrok/ngrok
 
 ## ngrok config file ##
-sed -i "s/__AUTH_TOKEN_HERE__/$AUTH_TOKEN/g" ngrok.yml
+## Check if remote config file is provided ##
+if [ -z "$REMOTE_CONFIG_URL" ];
+then
+    sed -i "s/__AUTH_TOKEN_HERE__/$AUTH_TOKEN/g" ngrok.yml
+    cp ./ngrok.yml /opt/ngrok/ngrok.conf
+else
+    #get from remote and update.
+    wget -O ./ngrok.remote.yml "$REMOTE_CONFIG_URL"
 
-cp ./ngrok.yml /opt/ngrok/ngrok.conf
+    # (Recommended) Don't store auth token in config, leave a placeholder to replace.
+    sed -i "s/__AUTH_TOKEN_HERE__/$AUTH_TOKEN/g" ngrok.remote.yml
+    cp ./ngrok.remote.yml /opt/ngrok/ngrok.conf
+fi
 
 ## Setup ngrok as a service ##
 cp ./ngrok.upstart.conf /etc/init/ngrok.conf

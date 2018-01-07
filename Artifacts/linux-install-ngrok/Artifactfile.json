@@ -1,10 +1,11 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-    "title": "linux-ngrok",
+    "title": "Install ngrok",
     "publisher": "Sheik Farhan",
     "description": "ngrok exposes local servers behind NATs and firewalls to the public internet over secure tunnels.",
     "tags": [
-        "Ngrok",
+        "Reverse Proxy",
+        "ngrok",
         "Linux"
     ],
     "iconUri": "https://raw.githubusercontent.com/fsheik/azure-devtestlab/master/Artifacts/linux-ngrok/icon.png",
@@ -15,9 +16,15 @@
             "displayName": "Auth Token",
             "allowEmpty": false,
             "description": "ngrok auth token"
+        },
+        "configFile" : {
+            "type": "string",
+            "displayName": "Config file URL",
+            "allowEmpty": true,
+            "description": "URL for the config file which will be downloaded (will override default if provided)"
         }
     },
     "runCommand": {
-        "commandToExecute": "[concat('bash linux-ngrok.sh ', parameters('authtoken'))]"
+        "commandToExecute": "[concat('bash linux-ngrok.sh ', parameters('authtoken'),' ', parameters('configFile'))]"
     }
 }
