@@ -8,7 +8,7 @@
         "ngrok",
         "Linux"
     ],
-    "iconUri": "https://raw.githubusercontent.com/fsheik/azure-devtestlab/master/Artifacts/linux-ngrok/icon.png",
+    "iconUri": "https://raw.githubusercontent.com/fsheik/azure-devtestlab/master/Artifacts/linux-install-ngrok/icon.png",
     "targetOsType": "Linux",
     "parameters": {
         "authtoken": {
