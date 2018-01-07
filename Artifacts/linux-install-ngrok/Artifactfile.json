@@ -25,6 +25,6 @@
         }
     },
     "runCommand": {
-        "commandToExecute": "[concat('bash linux-ngrok.sh ', parameters('authtoken'),' ', parameters('configFile'))]"
+        "commandToExecute": "[concat('bash linux-install-ngrok.sh ', parameters('authtoken'),' ', parameters('configFile'))]"
     }
 }
